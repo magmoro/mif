@@ -1,89 +1,98 @@
 {
+	"deps": ["Core"],
+	"Core":{
+		"Mif":{
+			"deps": ["/mootools"],
+			"desc": "Mif core"
+		}
+	},
 	"Tree":{
 		"Core":{
-			"Mif.Tree":{
-				"deps": ["Tree/Core/mootools-patch", "Tree/Core/Node", "/Tree/Core/Load", "Mif.Tree.Selection", "Mif.Tree.Hover", "Mif.Tree.Draw"],
+			"Tree":{
+				"deps": ["Tree/Core/mootools-patch", "Tree/Core/Node", "Tree/Core/Load", "Tree/Core/Selection", "Tree/Core/Hover", "Tree/Core/Draw"],
 				"desc": "Mif.Tree control base file"
 			},
-			"Mif.Tree.Node":{
-				"deps": ["Mif.Tree"],
+			"Node":{
+				"deps": ["Tree/Core/Tree"],
 				"desc": "Mif.Tree node class"
 			},
-			"Mif.Tree.Draw":{
-				"deps": ["Mif.Tree"],
+			"Draw":{
+				"deps": ["Tree/Core/Tree"],
 				"desc": "drawing Mif.Tree(create html code)"
 			},
-			"Mif.Tree.Selection":{
-				"deps": ["Mif.Tree"],
+			"Selection":{
+				"deps": ["Tree/Core/Tree"],
 				"desc": "implements selection"
 			},
-			"Mif.Tree.Hover":{
-				"deps": ["Mif.Tree"],
+			"Hover":{
+				"deps": ["Tree/Core/Tree"],
 				"desc": "implements hover effect"
 			},
-			"Mif.Tree.Load":{
-				"deps": ["Mif.Tree"],
+			"Load":{
+				"deps": ["Tree/Core/Tree"],
 				"desc": "load nodes from json, load json"
 			},
-			"Mif.Tree.mootools-patch":{
+			"mootools-patch":{
 				"deps": [],
 				"desc": "fix mootools bugs patch"
 			}
 		},
 		"More":{
-			"Mif.Tree.KeyNav":{
-				"deps": ["Mif.Tree"],
+			"deps": ["Tree/Core/Tree"],
+			"KeyNav":{
+				"deps": [],
 				"desc": "implement Mif.Tree keyboard navigation with up, left, right, down"
 			},
-			"Mif.Tree.Sort":{
-				"deps": ["Mif.Tree"],
+			"Sort":{
+				"deps": [],
 				"desc": "make Mif.Tree sortable"
 			},
-			"Mif.Tree.Transform":{
-				"deps": ["Mif.Tree"],
+			"Transform":{
+				"deps": [],
 				"desc": "implements move, copy, romove functionality"
 			},
-			"Mif.Tree.Drag":{
-				"deps": ["Mif.Tree","Mif.Tree.Transform"],
+			"Drag":{
+				"deps": ["Tree/More/Transform"],
 				"desc": "implements Drag'n'Drop"
 			},
-			"Mif.Tree.Drag.Element":{
+			"Drag.Element":{
 				"deps": [],
 				"desc": "dom elements can be used as drop containers"
 			},
-			"Mif.Tree.Rename":{
-				"deps": ["Mif.Tree"],
+			"Rename":{
+				"deps": [],
 				"desc": "implements inline rename node functionality"
 			},
-			"Mif.Tree.Row":{
-				"deps": ["Mif.Tree"],
+			"Row":{
+				"deps": [],
 				"desc": "implement rows"
 			},
-			"Mif.Tree.Checkbox":{
-				"deps": ["Mif.Tree"],
+			"Checkbox":{
+				"deps": ["Tree/Core/Tree"],
 				"desc": "checkbox implementation"
 			}
 		}
 	},
 	"Menu":{
 		"Core":{
-			"Mif.Menu":{
-				"deps": ["Mif.Menu.Utils", "Mif.Menu.List", "Mif.Menu.Item"],
+			"deps": ["Menu/Core/Menu"],
+			"Menu":{
+				"deps": ["Menu/Core/Utils", "Menu/Core/List", "Menu/Core/Item"],
 				"desc": "Mif.Menu control"
 			},
-			"Mif.Menu.List":{
+			"List":{
 				"deps": [],
 				"desc": "menu list Class"
 			},
-			"Mif.Menu.Item":{
+			"Item":{
 				"deps": [],
 				"desc": "menu item Class"
 			},
-			"Mif.Menu.Utils":{
+			"Utils":{
 				"deps": [],
 				"desc": "util functionality for menu"
 			},
-			"Mif.Menu.Container":{
+			"Container":{
 				"deps": [],
 				"desc": "container with shadow"
 			},
@@ -91,14 +100,14 @@
 				"deps": [],
 				"desc": "art container with canvas based graphic"
 			},
-			"Mif.Menu.CanvasContainer":{
+			"CanvasContainer":{
 				"deps": [],
 				"desc": "container canvas graphic"
 			}
 		},
 		"More":{
-			"Mif.Menu.KeyNav":{
-				"deps": ["Mif.Menu"],
+			"KeyNav":{
+				"deps": ["Menu"],
 				"desc": "KeyNav implementation"
 			}
 		}
