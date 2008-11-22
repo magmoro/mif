@@ -1,1 +1,0 @@
-var Mif={version:'0.1dev'}
