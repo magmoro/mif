@@ -1,115 +1,128 @@
 {
-	"deps": ["Core"],
-	"Core":{
-		"Mif":{
-			"deps": ["/mootools"],
-			"desc": "Mif core"
-		}
-	},
-	"Tree":{
+	"Mif":{
+		"deps": ["Core"],
 		"Core":{
-			"Tree":{
-				"deps": ["Tree/Core/mootools-patch", "Tree/Core/Node", "Tree/Core/Load", "Tree/Core/Selection", "Tree/Core/Hover", "Tree/Core/Draw"],
-				"desc": "Mif.Tree control base file"
-			},
-			"Node":{
-				"deps": ["Tree/Core/Tree"],
-				"desc": "Mif.Tree node class"
-			},
-			"Draw":{
-				"deps": ["Tree/Core/Tree"],
-				"desc": "drawing Mif.Tree(create html code)"
-			},
-			"Selection":{
-				"deps": ["Tree/Core/Tree"],
-				"desc": "implements selection"
-			},
-			"Hover":{
-				"deps": ["Tree/Core/Tree"],
-				"desc": "implements hover effect"
-			},
-			"Load":{
-				"deps": ["Tree/Core/Tree"],
-				"desc": "load nodes from json, load json"
-			},
-			"mootools-patch":{
-				"deps": [],
-				"desc": "fix mootools bugs patch"
+			"Mif":{
+				"deps": ["/mootools"],
+				"desc": "Mif core"
 			}
 		},
-		"More":{
-			"deps": ["Tree/Core/Tree"],
-			"KeyNav":{
-				"deps": [],
-				"desc": "implement Mif.Tree keyboard navigation with up, left, right, down"
+		"Tree":{
+			"Core":{
+				"Tree":{
+					"deps": ["Tree/Core/mootools-patch", "Tree/Core/Node", "Tree/Core/Load", "Tree/Core/Selection", "Tree/Core/Hover", "Tree/Core/Draw", "Tree/Core/Highlight"],
+					"desc": "Mif.Tree control base file"
+				},
+				"Node":{
+					"deps": ["Tree/Core/Tree"],
+					"desc": "Mif.Tree node class"
+				},
+				"Draw":{
+					"deps": ["Tree/Core/Tree", "Tree/Core/Node"],
+					"desc": "drawing Mif.Tree(create html code)"
+				},
+				"Selection":{
+					"deps": ["Tree/Core/Tree", "Tree/Core/Node"],
+					"desc": "implements selection"
+				},
+				"Hover":{
+					"deps": ["Tree/Core/Tree", "Tree/Core/Node"],
+					"desc": "implements hover effect"
+				},
+				"Load":{
+					"deps": ["Tree/Core/Tree", "Tree/Core/Node"],
+					"desc": "load nodes from json, load json"
+				},
+				"mootools-patch":{
+					"deps": [],
+					"desc": "fix mootools bugs patch"
+				},
+				"Highlight":{
+					"deps": ["Tree/Core/Tree", "Tree/Core/Node"],
+					"desc": "visual effects"
+				}
 			},
-			"Sort":{
-				"deps": [],
-				"desc": "make Mif.Tree sortable"
-			},
-			"Transform":{
-				"deps": [],
-				"desc": "implements move, copy, romove functionality"
-			},
-			"Drag":{
-				"deps": ["Tree/More/Transform"],
-				"desc": "implements Drag'n'Drop"
-			},
-			"Drag.Element":{
-				"deps": [],
-				"desc": "dom elements can be used as drop containers"
-			},
-			"Rename":{
-				"deps": [],
-				"desc": "implements inline rename node functionality"
-			},
-			"Row":{
-				"deps": [],
-				"desc": "implement rows"
-			},
-			"Checkbox":{
+			"More":{
 				"deps": ["Tree/Core/Tree"],
-				"desc": "checkbox implementation"
+				"KeyNav":{
+					"deps": [],
+					"desc": "implement Mif.Tree keyboard navigation with up, left, right, down"
+				},
+				"Sort":{
+					"deps": [],
+					"desc": "make Mif.Tree sortable"
+				},
+				"Transform":{
+					"deps": [],
+					"desc": "implements move, copy, romove functionality"
+				},
+				"Drag":{
+					"deps": ["Tree/More/Transform"],
+					"desc": "implements Drag'n'Drop"
+				},
+				"Drag.Element":{
+					"deps": ["Tree/More/Drag"],
+					"desc": "dom elements can be used as drop containers"
+				},
+				"Rename":{
+					"deps": [],
+					"desc": "implements inline rename node functionality"
+				},
+				"Row":{
+					"deps": [],
+					"desc": "implement rows"
+				},
+				"Checkbox":{
+					"deps": ["Tree/Core/Tree"],
+					"desc": "checkbox implementation"
+				}
+			}
+		},
+		"Menu":{
+			"Core":{
+				"deps": ["Menu/Core/Menu", "Menu/Core/List", "Menu/Core/Item", "Menu/Core/Utils"],
+				"Menu":{
+					"deps": [],
+					"desc": "Mif.Menu control"
+				},
+				"List":{
+					"deps": ["Menu/Core/Menu"],
+					"desc": "menu list Class"
+				},
+				"Item":{
+					"deps": ["Menu/Core/Menu"],
+					"desc": "menu item Class"
+				},
+				"Utils":{
+					"deps": ["Menu/Core/Menu"],
+					"desc": "util functionality for menu"
+				},
+				"Container":{
+					"deps": ["Menu/Core/Menu"],
+					"desc": "container with shadow"
+				},
+				"ART":{
+					"deps": ["Menu/Core/Menu"],
+					"desc": "art container with canvas based graphic"
+				},
+				"CanvasContainer":{
+					"deps": ["Menu/Core/Menu"],
+					"desc": "container canvas graphic"
+				}
+			},
+			"More":{
+				"deps": ["Menu/Core/Menu"],
+				"KeyNav":{
+					"deps": [],
+					"desc": "KeyNav implementation"
+				}
 			}
 		}
 	},
-	"Menu":{
-		"Core":{
-			"deps": ["Menu/Core/Menu"],
-			"Menu":{
-				"deps": ["Menu/Core/Utils", "Menu/Core/List", "Menu/Core/Item"],
-				"desc": "Mif.Menu control"
-			},
-			"List":{
-				"deps": [],
-				"desc": "menu list Class"
-			},
-			"Item":{
-				"deps": [],
-				"desc": "menu item Class"
-			},
-			"Utils":{
-				"deps": [],
-				"desc": "util functionality for menu"
-			},
-			"Container":{
-				"deps": [],
-				"desc": "container with shadow"
-			},
-			"ART":{
-				"deps": [],
-				"desc": "art container with canvas based graphic"
-			},
-			"CanvasContainer":{
-				"deps": [],
-				"desc": "container canvas graphic"
-			}
-		},
-		"More":{
-			"KeyNav":{
-				"deps": ["Menu"],
-				"desc": "KeyNav implementation"
-			}
+	"mootools":{
+		"mootools":{
+			"deps":[],
+			"desc":"mootools - compact javascript framework"
 		}
 	}
 }

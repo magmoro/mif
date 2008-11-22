@@ -1,0 +1,96 @@
+[
+	{
+		"name": "<b>node1.1</b>",
+		"type": "book"
+	},
+	{
+		"name": "drag me! sorry imposible",
+		"hasCheckbox": false,
+		"type": "disabled",
+		"children":[
+			{
+				"name": "anode1.3.1",
+				"hasCheckbox": false,
+				"type": "folder"
+			},
+			{
+				"name": "node1.3.0",
+				"hasCheckbox": false,
+				"type": "folder"
+			}
+		]
+	},
+	{
+		"name": "node1.2",
+		"loadable":true,
+		"type": "folder"
+	},
+	{
+		"name": "node1.3",
+		"data": {
+			"a": "aaa"
+		},
+		"type": "folder",
+		"children":[
+			{
+				"name": "node1.3.1",
+				"type": "folder"
+			},
+			{
+				"name": "node1.3.2",
+				"type": "folder"
+			}
+		]
+	},
+	{
+		"name": "node1.4",
+		"data":{
+			"data1": "rtfm",
+			"data2": "xyz"
+		},
+		"children":[
+			{
+				"name": "empty",
+				"loadable": "true",
+				"type": "folder"
+			},
+			{
+				"name": "node1.4.2",
+				"type": "folder"
+			}
+		]
+	},
+	{
+		"name": "books",
+		"type": "folder",
+		"children":[
+			{
+				"name": "node1.5.1",
+				"type": "book"
+			},
+			{
+				"name": "node1.5.2",
+				"type": "book"
+			}
+		]
+	},
+	{
+		"name": "node1.6",
+		"type": "bin",
+		"children":[
+			{
+				"name": "node1.6.1",
+				"hasCheckbox": false,
+				"type": "folder"
+			},
+			{
+				"name": "node1.6.2",
+				"data":{
+					"test": "acd",
+					"arrrrr": ["a","b","c"]
+				},
+				"type": "folder"
+			}
+		]
+	}
+]

@@ -1,0 +1,1 @@
+alert([document.location, 1]);

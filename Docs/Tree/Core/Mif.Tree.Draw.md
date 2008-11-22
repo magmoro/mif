@@ -1,11 +1,11 @@
 Mif.Tree.Draw {#Mif.Tree.Draw}
-======================
+==============================
 
 Mif.Tree.Draw object contains functions used for create and update Mif.Tree HTML structure.
 
 
 (private) Function: Mif.Tree.Draw.children {#Mif.Tree.Draw.children}
----------------------
+--------------------------------------------------------------------
 
 Creates html structure for node children.
 Html structure is:

@@ -10,11 +10,12 @@ window.addEvent('domready',function(){
 					if(this.target && this.target.type=='book' && this.current.type=='book' && this.where=='inside'){
 						this.where='notAllowed';
 					}
-					$('destination').innerHTML=this.target ? this.target.name : '';
+					
+					$('destination').innerHTML=this.target ? this.target.get('name') : '';
 					$('where').innerHTML=this.where;
 				},
 				onStart: function(){
-					$('source').innerHTML=this.current.name;
+					$('source').innerHTML=this.current.get('name');
 				},
 				onComplete: function(){
 					$('destination').innerHTML='';
@@ -22,6 +23,7 @@ window.addEvent('domready',function(){
 					$('source').innerHTML='';
 				}
 			});
+			new Mif.Tree.Highlight(this);
 		},
 		types: {
 			folder:{
@@ -50,32 +52,31 @@ window.addEvent('domready',function(){
 			}
 		},
 		dfltType:'folder',
-		height: 18,
+		height: 19,
 		onCopy: function(from, to, where, copy){
 			if(from.getParent()==copy.getParent()){
 				copy.set({
 					property: {
-						name: 'copy '+from.name
+						name: 'copy '+from.get('name')
 					}
 				});
 			}
 		}
 	});
-
 	//tree.initSortable();
 	tree.load({
-		url: '../assets/files/forest.json'
+		url: 'assets/files/forest.json'
 	});
 
 	tree.loadOptions=function(node){
 		// if node name 'empty' load from url 'empty.json'
 		if(node.name=='empty'){
 			return {
-				url: '../assets/files/empty.json'
+				url: 'assets/files/empty.json'
 			}
 		}
 		return {
-			url: '../assets/files/mediumTree.json'
+			url: 'assets/files/mediumTree.json'
 		};
 	}
 	
@@ -85,11 +86,11 @@ window.addEvent('domready',function(){
 			new Mif.Tree.KeyNav(this);
 			new Mif.Tree.Drag(this, {
 				onDrag: function(){
-					$('destination').innerHTML=this.target ? this.target.name : '';
+					$('destination').innerHTML=this.target ? this.target.get('name') : '';
 					$('where').innerHTML=this.where;
 				},
 				onStart: function(){
-					$('source').innerHTML=this.current.name;
+					$('source').innerHTML=this.current.get('name');
 				},
 				onComplete: function(){
 					$('destination').innerHTML='';
@@ -130,7 +131,7 @@ window.addEvent('domready',function(){
 			if(from.getParent()==copy.getParent()){
 				copy.set({
 					property: {
-						name: 'copy '+from.name
+						name: 'copy '+from.get('name')
 					}
 				});
 			}
@@ -181,5 +182,5 @@ window.addEvent('domready',function(){
 	tree2.load({
 		json: json
 	});
-	
+	 
 });
