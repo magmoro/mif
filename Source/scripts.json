@@ -10,7 +10,7 @@
 		"Tree":{
 			"Core":{
 				"Tree":{
-					"deps": ["Tree/Core/mootools-patch", "Tree/Core/Node", "Tree/Core/Load", "Tree/Core/Selection", "Tree/Core/Hover", "Tree/Core/Draw", "Tree/Core/Highlight"],
+					"deps": ["Tree/Core/mootools-patch", "Tree/Core/Node", "Tree/Core/Load", "Tree/Core/Selection", "Tree/Core/Hover", "Tree/Core/Draw"],
 					"desc": "Mif.Tree control base file"
 				},
 				"Node":{
@@ -36,10 +36,6 @@
 				"mootools-patch":{
 					"deps": [],
 					"desc": "fix mootools bugs patch"
-				},
-				"Highlight":{
-					"deps": ["Tree/Core/Tree", "Tree/Core/Node"],
-					"desc": "visual effects"
 				}
 			},
 			"More":{
@@ -67,10 +63,6 @@
 				"Rename":{
 					"deps": [],
 					"desc": "implements inline rename node functionality"
-				},
-				"Row":{
-					"deps": [],
-					"desc": "implement rows"
 				},
 				"Checkbox":{
 					"deps": ["Tree/Core/Tree"],

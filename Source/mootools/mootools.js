@@ -1200,9 +1200,8 @@ var Events = new Class({
 	fireEvent: function(type, args, delay){
 		type = Events.removeOn(type);
 		if (!this.$events || !this.$events[type]) return this;
-		this.$events[type].each(function(fn){
-			fn.create({'bind': this, 'delay': delay, 'arguments': args})();
-		}, this);
+		var fns = this.$events[type];
+		for (var i = fns.length; i--; i) fns[i].create({'bind': this, 'delay': delay, 'arguments': args})();
 		return this;
 	},
 
@@ -4010,6 +4009,7 @@ Fx.Slide = new Class({
 
 	start: function(how, mode){
 		if (!this.check(arguments.callee, how, mode)) return this;
+		this.fireEvent('beforeStart');
 		this[mode || this.options.mode]();
 		var margin = this.element.getStyle(this.margin).toInt();
 		var layout = this.wrapper.getStyle(this.layout).toInt();

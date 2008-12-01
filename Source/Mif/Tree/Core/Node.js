@@ -38,32 +38,91 @@ Mif.Tree.Node = new Class({
 		return (this.property.loadable && !this.isLoaded()) ? 'plus' : (this.hasChildren() ? (this.isOpen() ? 'minus' : 'plus') : 'none');
 	},
 	
-	toggle: function(state) {
-		if(this.property.open==state || this.$loading || this.$toggling) return;
+	toggle: function(state, animate) {
+		if(this.property.open==state || this.$loading) return;
+		animate=$pick(animate, this.property.animateToggle, this.tree.options.animateToggle);
+		var tree=this.tree;
+		var parent=this.getParent();
+		if(parent && parent.$toggling && animate){	
+			var self=this;
+			function toggle_child(){
+				self.toggle(state, animate);
+				tree.removeEvent('toggle', toggle_child);
+			}
+			tree.addEvent('toggle', toggle_child);
+			return this;
+		}
+		
 		if(this.property.loadable && !this.property.loaded) {
 			var load=function(){
                 this.toggle();
-                //this.removeEvent('load', load);
+                this.removeEvent('load', load);
             }.bind(this);
             this.addEvent('load',load);
             this.load();
             return;
 		}
-		if(!this.hasChildren()) return;
-		var next=this.getNextVisible();
+		if(!this.hasChildren()) {
+			this.fireEvent('toggle');
+			return;
+		}
+		this.$toggling=true;
 		this.property.open = !this.property.open;
-		state=this.property.open;
-		if(!this.$draw) Mif.Tree.Draw.children(this);
-		var children=this.getDOM('children');	
-		var gadjet=this.getDOM('gadjet');
-		var icon=this.getDOM('icon');
-		children.style.display=this.isOpen() ? 'block' : 'none';
-		gadjet.className='mif-tree-gadjet mif-tree-gadjet-'+this.getGadjetType();
-		icon.className='mif-tree-icon '+this.property[this.isOpen() ? 'openIcon' : 'closeIcon'];
-		this.tree.hoverState.gadjet=false;
-		this.tree.hover();
-		this.tree.$getIndex();
-		this.tree.fireEvent('toggle', [this, this.property.open]);
+		//Mif.Tree.Draw.update(this);
+		if(!this.$draw) Mif.Tree.Draw.children(this);	
+		var self=this;
+		function complete(){
+			self.$toggling=false;
+			Mif.Tree.Draw.update(self).tree.$getIndex().fireEvent('toggle', [self, self.property.open]);
+			self.fireEvent('toggle');
+		}
+		
+		if(!animate){
+			complete();
+			return this;
+		}
+		if(!this.slide){
+			var children=this.getDOM('children');
+			
+			this.slide=new Fx.Slide(children, {
+				link: 'cancel',
+				onComplete: function(){
+					this.completing=false;
+					children.setStyle('display', self.isOpen() ? 'block' : 'none').store('margin-top', children.getStyle('margin-top'));
+					//UNWRAP
+					var wrapper=this.wrapper;
+					children.inject(wrapper, 'before');
+					wrapper.dispose();
+					//UNWRAP
+					if(Browser.Engine.gecko) self.tree.container.getFirst().reinject();
+					complete();
+				},
+				onBeforeStart: function(){
+					if(this.completing) return;
+					this.completing=true;
+					var el=this.element;
+					var margin=el.retrieve('margin-top');
+					if(margin) el.setStyle('margin-top', margin);
+					el.style.display='block';
+					var wrapper=this.wrapper;
+					wrapper.style.position='relative';
+					this.offset=el.offsetHeight;
+					if(this.open) wrapper.setStyle('height', this.offset);
+					//WRAP
+					if(children.parentNode!=wrapper){
+						wrapper.inject(children, 'after');
+						children.inject(wrapper);//WRAP
+					}else if(Browser.Engine.gecko){//fix ff bug
+						wrapper.reinject();
+					}
+				},
+				duration: 250,
+				fps: 50
+			});
+			this.isOpen() ? this.slide.hide() : this.slide.show();
+		}
+		this.slide.start(this.isOpen() ? 'in' : 'out');
+		return this;
 	},
 	
 	recursive: function(fn, args){
@@ -214,7 +273,8 @@ Mif.Tree.Node = new Class({
 	updateOpenState: function(){
 		if(this.property.open){
 			this.property.open=false;
-			this.toggle();
+			Mif.Tree.Draw.update(this);
+			this.toggle(true);
 		}
 	}
 	

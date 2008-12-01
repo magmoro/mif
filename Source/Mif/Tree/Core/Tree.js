@@ -22,8 +22,9 @@ Mif.Tree = new Class({
 		types: {},
 		forest: false,
 		animateScroll: true,
-		height: 18,
+		animateToggle: true,
 		expandTo: true,
+		height: Fx.CSS.prototype.search('.mif-tree-wrapper')['line-height'],
 		lightType: 'node'
 	},
 	
@@ -34,7 +35,6 @@ Mif.Tree = new Class({
 			forest: this.options.forest,
 			animateScroll: this.options.animateScroll,
 			height: this.options.height,
-			container: $(options.container),
 			dfltType: this.options.dfltType,
 			lightType: this.options.lightType,// node - highlight icon and node, row - highlight row
 			UID: 0,
@@ -55,7 +55,10 @@ Mif.Tree = new Class({
 		if(this.options.expandTo) this.initExpandTo();
 		Mif.Tree.UID++;
 		this.DOMidPrefix='mif-tree-';
-		this.wrapper=new Element('div').addClass('mif-tree-wrapper').injectInside(this.container);
+		//this.wrapper=new Element('div').addClass('mif-tree-wrapper').injectInside(this.container);
+		this.container=new Element('div', {'class': 'mif-tree-container'}).inject(this.options.container);
+		this.container.set('html', '<table><tbody><tr><td></td></tr></tbody></table>').getFirst().addClass('mif-tree-wrapper');
+		this.wrapper=this.container.getElement('td');
 		this.initEvents();
 		this.initScroll();
 		this.initSelection();
@@ -79,12 +82,13 @@ Mif.Tree = new Class({
 		}
 	},
 	
-	$getIndex: function(){//return array of visible nodes.
+	$getIndex: function(){//set array of visible nodes.
 		this.$index=[];
 		var node=this.forest ? this.root.getFirst() : this.root;
 		do{
 			this.$index.push(node);
 		}while(node=node.getNextVisible());
+		return this;
 	},
 	
 	mouseleave: function(){
@@ -165,22 +169,22 @@ Mif.Tree = new Class({
 	},
 	
 	initScroll: function(){
-		this.scroll=new Fx.Scroll(this.wrapper);
+		this.scroll=new Fx.Scroll(this.container);
 	},
 	
 	scrollTo: function(node){
 		var position=node.getVisiblePosition();
 		var top=position*this.height;
-		var up=top<this.wrapper.scrollTop;
-		var down=top>(this.wrapper.scrollTop+this.wrapper.clientHeight);
+		var up=top<this.container.scrollTop;
+		var down=top>(this.container.scrollTop+this.container.clientHeight);
 		if(position==-1 || ( !up && !down ) ) {
 			this.scroll.fireEvent('complete');
 			return false;
 		}
 		if(this.animateScroll){
-			this.scroll.start(this.wrapper.scrollLeft, top-(down ? this.wrapper.clientHeight-this.height : 0));
+			this.scroll.start(this.container.scrollLeft, top-(down ? this.container.clientHeight-this.height : 0));
 		}else{
-			this.scroll.set(this.wrapper.scrollLeft, top-(down ? this.wrapper.clientHeight-this.height : 0));
+			this.scroll.set(this.container.scrollLeft, top-(down ? this.container.clientHeight-this.height : 0));
 			this.scroll.fireEvent('complete');
 		}
 	},

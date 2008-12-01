@@ -23,7 +23,6 @@ window.addEvent('domready',function(){
 					$('source').innerHTML='';
 				}
 			});
-			new Mif.Tree.Highlight(this);
 		},
 		types: {
 			folder:{
@@ -70,7 +69,7 @@ window.addEvent('domready',function(){
 
 	tree.loadOptions=function(node){
 		// if node name 'empty' load from url 'empty.json'
-		if(node.name=='empty'){
+		if(node.get('name')=='empty'){
 			return {
 				url: 'assets/files/empty.json'
 			}

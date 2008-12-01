@@ -17,7 +17,7 @@ Mif.Tree.Load={
 				arguments.callee(subChildren, node, tree);
 			}
 		}
-		if(parent) parent.loaded=true;
+		if(parent) parent.property.loaded=true;
 		tree.fireEvent('loadChildren', parent);
 	}
 	

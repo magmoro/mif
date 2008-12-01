@@ -7,11 +7,10 @@ window.addEvent('domready',function(){
 				closeIcon: 'mif-tree-close-icon'
 			}
 		},
-		dfltType:'folder',
-		height:20
+		dfltType:'folder'
 	})
 	.load({
-		url: '../assets/files/simpleTree.json'
+		url: 'assets/files/simpleTree.json'
 	})
 	.addEvent('load', function(){
 		this.root.recursive(function(){
@@ -23,11 +22,7 @@ window.addEvent('domready',function(){
 	
 	$('add_node').addEvent('click', function(){
 		var current=SimpleTree.selected;
-		SimpleTree.add({
-			property: {
-				name: $('node_name').value
-			}
-		}, current, $('where').getElement(':selected').innerHTML);
+		SimpleTree.add({name: $('node_name').value}, current, $('where').getElement(':selected').innerHTML);
 		return false;
 	});
 	

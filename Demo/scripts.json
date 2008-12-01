@@ -36,9 +36,6 @@
 		"CheckboxDeps":{
 			"title": "Tree dependences checkboxes"
 		},
-		"Row":{
-			"title": "Tree row highlighting."
-		},
 		"DragAndDrop":{
 			"title": "Tree drag'n'drop"
 		},
