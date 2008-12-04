@@ -83,5 +83,10 @@
 		"MenuKeyNav":{
 			"title": "KeyNav implementation demo"
 		}
+	},
+	"TreeGrid":{
+		"SimpleTree":{
+			"title": "Simple tree-grid"
+		}
 	}
 }

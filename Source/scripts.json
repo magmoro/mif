@@ -109,6 +109,69 @@
 					"desc": "KeyNav implementation"
 				}
 			}
+		},
+		"TreeGrid":{
+			"Core":{
+				"Tree":{
+					"deps": ["TreeGrid/Core/mootools-patch", "TreeGrid/Core/Node", "TreeGrid/Core/Load", "TreeGrid/Core/Selection", "TreeGrid/Core/Hover", "TreeGrid/Core/Draw"],
+					"desc": "Mif.TreeGrid control base file"
+				},
+				"Node":{
+					"deps": ["TreeGrid/Core/Tree"],
+					"desc": "Mif.TreeGrid node class"
+				},
+				"Draw":{
+					"deps": ["TreeGrid/Core/Tree", "TreeGrid/Core/Node"],
+					"desc": "drawing Mif.TreeGrid(create html code)"
+				},
+				"Selection":{
+					"deps": ["TreeGrid/Core/Tree", "TreeGrid/Core/Node"],
+					"desc": "implements selection"
+				},
+				"Hover":{
+					"deps": ["TreeGrid/Core/Tree", "TreeGrid/Core/Node"],
+					"desc": "implements hover effect"
+				},
+				"Load":{
+					"deps": ["TreeGrid/Core/Tree", "TreeGrid/Core/Node"],
+					"desc": "load nodes from json, load json"
+				},
+				"mootools-patch":{
+					"deps": [],
+					"desc": "fix mootools bugs patch"
+				}
+			},
+			"More":{
+				"deps": ["TreeGrid/Core/Tree"],
+				"KeyNav":{
+					"deps": [],
+					"desc": "implement Mif.TreeGrid keyboard navigation with up, left, right, down"
+				},
+				"Sort":{
+					"deps": [],
+					"desc": "make Mif.TreeGrid sortable"
+				},
+				"Transform":{
+					"deps": [],
+					"desc": "implements move, copy, romove functionality"
+				},
+				"Drag":{
+					"deps": ["TreeGrid/More/Transform"],
+					"desc": "implements Drag'n'Drop"
+				},
+				"Drag.Element":{
+					"deps": ["TreeGrid/More/Drag"],
+					"desc": "dom elements can be used as drop containers"
+				},
+				"Rename":{
+					"deps": [],
+					"desc": "implements inline rename node functionality"
+				},
+				"Checkbox":{
+					"deps": ["TreeGrid/Core/Tree"],
+					"desc": "checkbox implementation"
+				}
+			}
 		}
 	},
 	"mootools":{
