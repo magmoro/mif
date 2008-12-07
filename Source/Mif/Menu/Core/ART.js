@@ -6,10 +6,6 @@ var ART = {};
 
 Element.implement({
 	
-	setContent: function(content){
-		return (typeof content == 'string') ? this.set('html', content) : this.adopt(content);
-	},
-	
 	forceFocus: function(){
 		this.blur();
 		this.focus();

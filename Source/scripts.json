@@ -67,6 +67,10 @@
 				"Checkbox":{
 					"deps": ["Tree/Core/Tree"],
 					"desc": "checkbox implementation"
+				},
+				"CookieStorage":{
+					"deps": [],
+					"desc": "cookie collapse/expand state storage"
 				}
 			}
 		},
@@ -171,6 +175,12 @@
 					"deps": ["TreeGrid/Core/Tree"],
 					"desc": "checkbox implementation"
 				}
+			}
+		},
+		"Utils":{
+			"Shadow":{
+				"deps": [],
+				"desc": "shadow container"
 			}
 		}
 	},

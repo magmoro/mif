@@ -6,12 +6,12 @@ window.addEvent('domready',function(){
 		container: $('tree_container'),// tree container
 		types: {// node types
 			folder:{
-				openIcon: 'mif-tree-open-icon',//css class open icon
-				closeIcon: 'mif-tree-close-icon'// css class close icon
+				openIcon: 'mif-treegrid-open-icon',//css class open icon
+				closeIcon: 'mif-treegrid-close-icon'// css class close icon
 			}
 		},
 		dfltType:'folder',//default node type
-		height: 19,//node height
+		height: 20,//node height
 		cols: ['name', 'url'],
 		animateToggle: true
 	});

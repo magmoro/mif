@@ -17,7 +17,7 @@ Mif.TreeGrid.implement({
 			checkbox: false,
 			icon: false,
 			name: false,
-			node: false
+			row: false
 		};
 		this.hoverState=$unlink(this.defaultHoverState);
 	},
@@ -28,13 +28,13 @@ Mif.TreeGrid.implement({
 		var ctarget=this.mouse.target;
 		this.t=$time();
 		$each(this.hoverState, function(node, target, state){
-			if(node==cnode && (target=='node'||target==ctarget)) return;
+			if(node==cnode && (target=='row'||target==ctarget)) return;
 			if(node) {
 				Mif.TreeGrid.Hover.out(node, target);
 				state[target]=false;
 				this.fireEvent('hover', [node, target, 'out']);
 			}
-			if(cnode && (target=='node'||target==ctarget)) {
+			if(cnode && (target=='row'||target==ctarget)) {
 				Mif.TreeGrid.Hover.over(cnode, target);
 				state[target]=cnode;
 				this.fireEvent('hover', [cnode, target, 'over']);

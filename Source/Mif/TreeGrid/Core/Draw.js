@@ -36,23 +36,23 @@ Mif.TreeGrid.Draw={
 		var prefix=node.tree.DOMidPrefix;
 		if($defined(node.property.checked)){
 			if(!node.hasCheckbox) node.property.checked='nochecked';
-			var checkbox='<span class="mif-tree-checkbox mif-tree-node-'+node.property.checked+'" uid="'+node.UID+'"></span>';
+			var checkbox='<span class="mif-treegrid-checkbox mif-treegrid-node-'+node.property.checked+'" uid="'+node.UID+'"></span>';
 		}else{
 			var checkbox='';
 		}
 		html=html||[];
-		html.push('<div class="mif-treegrid-row">');
+		html.push('<div class="mif-treegrid-row"','" uid="',node.UID,'">');
 		html.push('<div class="mif-treegrid-col mif-treegrid-treecol" style="width:',tree.options.colWidth,'px">');//open tree col
 		html.push(this.getIndent(node));
 		html.push(
-		'<span class="mif-tree-node ',(node.isLast() ? 'mif-tree-node-last' : ''),'" id="',prefix,node.UID,'">',
-			'<span class="mif-tree-node-wrapper ',node.property.cls,'" uid="',node.UID,'">',
-				'<span class="mif-tree-gadjet mif-tree-gadjet-',node.getGadjetType(),'" uid="',node.UID,'"></span>',
-				'<span class="mif-tree-light"><span class="mif-tree-left"></span>',
+		'<span class="mif-treegrid-node ',(node.isLast() ? 'mif-treegrid-node-last' : ''),'" id="',prefix,node.UID,'">',
+			'<span class="mif-treegrid-node-wrapper ',node.property.cls,'" uid="',node.UID,'">',
+				'<span class="mif-treegrid-gadjet mif-treegrid-gadjet-',node.getGadjetType(),'" uid="',node.UID,'"></span>',
+				'<span class="mif-treegrid-light"><span class="mif-treegrid-left"></span>',
 					checkbox,
-					'<span class="mif-tree-icon ',node.property.closeIcon,'" uid="',node.UID,'"></span>',
-					'<span class="mif-tree-name" uid="',node.UID,'">',node.property.name,'</span>',
-				'<span class="mif-tree-right"></span></span>',
+					'<span class="mif-treegrid-icon ',node.property.closeIcon,'" uid="',node.UID,'"></span>',
+					'<span class="mif-treegrid-name" uid="',node.UID,'">',node.property.name,'</span>',
+				'<span class="mif-treegrid-right"></span></span>',
 			'</span>',
 		'</span>'
 		);
@@ -75,7 +75,6 @@ Mif.TreeGrid.Draw={
 			this.getHTML(children[i],html);
 		}
 		container=container || parent.getDOM('children');
-		console.log(container);
 		container.set('html', html.join(''));
 		parent.tree.fireEvent('drawChildren',[parent]);
 	},
@@ -86,7 +85,7 @@ Mif.TreeGrid.Draw={
 	},
 	
 	forestRoot: function(tree){
-		var container=new Element('div').addClass('mif-tree-children-root').injectInside(tree.wrapper);
+		var container=new Element('div').addClass('mif-treegrid-children-root').injectInside(tree.wrapper);
 		Mif.TreeGrid.Draw.children(tree.root, container);
 	},
 	
@@ -99,10 +98,10 @@ Mif.TreeGrid.Draw={
 		if( (node.tree.forest && node.isRoot()) || (node.getParent() && !node.getParent().$draw) ) return node;
 		if(!node.hasChildren()) node.property.open=false;
 		node.getDOM('name').set('html', node.property.name);
-		node.getDOM('wrapper').className='mif-tree-node-wrapper '+node.property.cls;
-		node.getDOM('gadjet').className='mif-tree-gadjet mif-tree-gadjet-'+node.getGadjetType();
-		node.getDOM('icon').className='mif-tree-icon '+node.property[node.isOpen() ? 'openIcon' : 'closeIcon'];
-		node.getDOM('node')[(node.isLast() ?'add' : 'remove')+'Class']('mif-tree-node-last');
+		node.getDOM('wrapper').className='mif-treegrid-node-wrapper '+node.property.cls;
+		node.getDOM('gadjet').className='mif-treegrid-gadjet mif-treegrid-gadjet-'+node.getGadjetType();
+		node.getDOM('icon').className='mif-treegrid-icon '+node.property[node.isOpen() ? 'openIcon' : 'closeIcon'];
+		node.getDOM('node')[(node.isLast() ?'add' : 'remove')+'Class']('mif-treegrid-node-last');
 		node.select(node.isSelected());
 		node.tree.updateHover();
 		if(node.$loading) {

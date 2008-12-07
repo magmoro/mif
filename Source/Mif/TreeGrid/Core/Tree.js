@@ -24,7 +24,7 @@ Mif.TreeGrid = new Class({
 		animateScroll: true,
 		animateToggle: true,
 		expandTo: true,
-		height: Fx.CSS.prototype.search('.mif-tree-wrapper')['line-height'],
+		height: Fx.CSS.prototype.search('.mif-treegrid-wrapper')['line-height'],
 		lightType: 'node',
 		colWidth: 200
 	},
@@ -57,8 +57,8 @@ Mif.TreeGrid = new Class({
 		Mif.TreeGrid.UID++;
 		this.DOMidPrefix='mif-tree-';
 		//this.wrapper=new Element('div').addClass('mif-tree-wrapper').injectInside(this.container);
-		this.container=new Element('div', {'class': 'mif-tree-container'}).inject(this.options.container);
-		this.container.set('html', '<table><tbody><tr><td></td></tr></tbody></table>').getFirst().addClass('mif-tree-wrapper');
+		this.container=new Element('div', {'class': 'mif-treegrid-container'}).inject(this.options.container);
+		this.container.set('html', '<table><tbody><tr><td></td></tr></tbody></table>').getFirst().addClass('mif-treegrid-wrapper');
 		this.wrapper=this.container.getElement('td');
 		Mif.TreeGrid.Draw.structure(this);
 		this.initEvents();
@@ -69,7 +69,7 @@ Mif.TreeGrid = new Class({
 	},
 	
 	initEvents: function(){
-		this.wrapper.addEvents({
+		this.body.addEvents({
 			mousemove: this.mouse.bindWithEvent(this),
 			mouseover: this.mouse.bindWithEvent(this),
 			mouseout: this.mouse.bindWithEvent(this),
@@ -109,11 +109,12 @@ Mif.TreeGrid = new Class({
 	},
 	
 	getTarget: function(event){
-		var target=event.target, node;
-		while(!/mif-tree/.test(target.className)){
+		var target=event.target, node, test=false;
+		while(target && target!=this.body){
+			test=target.className.match(/mif-treegrid-(gadjet)-[^n]|mif-treegrid-(icon)|mif-treegrid-(name)|mif-treegrid-(checkbox)|mif-treegrid-(row)/);
+			if(test) break;
 			target=target.parentNode;
 		}
-		var test=target.className.match(/mif-tree-(gadjet)-[^n]|mif-tree-(icon)|mif-tree-(name)|mif-tree-(checkbox)/);
 		
 		if(!test){
 			var y=this.mouse.coords.y;
@@ -124,7 +125,7 @@ Mif.TreeGrid = new Class({
 			}
 			return {
 				node: node,
-				target: 'node'
+				target: 'row'
 			};
 		}
 		for(var i=5;i>0;i--){
@@ -162,7 +163,7 @@ Mif.TreeGrid = new Class({
 	
 	toggleDblclick: function(event){
 		var target=this.mouse.target;
-		if(!(target=='name'||target=='icon')) return;
+		if(!target) return;
 		this.mouse.node.toggle();
 	},
 	

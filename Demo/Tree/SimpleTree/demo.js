@@ -2,6 +2,7 @@ window.addEvent('domready',function(){
 	tree = new Mif.Tree({
 		initialize: function(){
 			//new Mif.Tree.Highlight(this);
+			new Mif.Tree.Drag(this);
 		},
 		container: $('tree_container'),// tree container
 		types: {// node types
@@ -13,7 +14,7 @@ window.addEvent('domready',function(){
 		dfltType:'folder',//default node type
 		height: 19//node height
 	});
-
+	
 	var json=[
 		{
 			"name": "root",

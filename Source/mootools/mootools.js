@@ -17,7 +17,7 @@ Inspiration:
 */
 
 var MooTools = {
-	'version': '1.2.1',
+	'version': '1.2.1hacked',
 	'build': '0d4845aab3d9a4fdee2f0d4a6dd59210e4b697cf'
 };
 
@@ -4143,10 +4143,12 @@ Fx.Scroll = new Class({
 
 	start: function(x, y){
 		if (!this.check(arguments.callee, x, y)) return this;
-		var offsetSize = this.element.getSize(), scrollSize = this.element.getScrollSize();
+		var clientSize = {x: this.element.clientWidth, y: this.element.clientHeight};
+		//this.element.getSize(), 
+		var scrollSize = this.element.getScrollSize();
 		var scroll = this.element.getScroll(), values = {x: x, y: y};
 		for (var z in values){
-			var max = scrollSize[z] - offsetSize[z];
+			var max = scrollSize[z] - clientSize[z];
 			if ($chk(values[z])) values[z] = ($type(values[z]) == 'number') ? values[z].limit(0, max) : max;
 			else values[z] = scroll[z];
 			values[z] += this.options.offset[z];
@@ -5325,7 +5327,7 @@ var Scroller = new Class({
 		if (!this.timer) this.timer = this.scroll.periodical(50, this);
 	},
 
-	scroll: function(){
+	/* scroll: function(){
 		var size = this.element.getSize(), scroll = this.element.getScroll(), pos = this.element.getPosition(), change = {'x': 0, 'y': 0};
 		for (var z in this.page){
 			if (this.page[z] < (this.options.area + pos[z]) && scroll[z] != 0)
@@ -5334,7 +5336,20 @@ var Scroller = new Class({
 				change[z] = (this.page[z] - size[z] + this.options.area - pos[z]) * this.options.velocity;
 		}
 		if (change.y || change.x) this.fireEvent('change', [scroll.x + change.x, scroll.y + change.y]);
-	}
+	} */
+	
+	scroll: function(){
+		var size = {x: this.element.clientWidth, y: this.element.clientHeight};
+	    var /* size = this.element.getSize(), */ scroll = this.element.getScroll(), pos = this.element.getOffsets(), scrollSize = this.element.getScrollSize(), change = {'x': 0, 'y': 0};
+	    for (var z in this.page){
+	      if (this.page[z] < (this.options.area + pos[z]) && scroll[z] != 0)
+	        change[z] = (this.page[z] - this.options.area - pos[z]) * this.options.velocity;
+	      else if (this.page[z] + this.options.area > (size[z] + pos[z]) && scroll[z] + size[z] != scrollSize[z])
+	        change[z] = (this.page[z] - size[z] + this.options.area - pos[z]) * this.options.velocity;
+	    }
+	    if (change.y || change.x) this.fireEvent('change', [scroll.x + change.x, scroll.y + change.y]);
+  }
+	
 
 });
 

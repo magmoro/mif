@@ -53,6 +53,9 @@
 		},
 		"AddNode2":{
 			"title": "Another add node demo"
+		},
+		"Cookie":{
+			"title": "cookie expande/collapse storage"
 		}
 	},
 	"Menu":{
@@ -87,6 +90,11 @@
 	"TreeGrid":{
 		"SimpleTree":{
 			"title": "Simple tree-grid"
+		}
+	},
+	"Utils":{
+		"shadowContainer": {
+			"title": "shadow container"
 		}
 	}
 }

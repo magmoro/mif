@@ -79,6 +79,7 @@ Mif.Tree.Drag = new Class({
 			}, this);
 			Mif.Tree.Drag.current.getDOM('wrapper').addClass('mif-tree-draggable');
 			this.addGhost();
+			this.scroller.start();
 		}, true);
 		this.addEvent('complete', function(){
 			document.removeEvent('keydown', this.bound.keydown);
@@ -86,6 +87,7 @@ Mif.Tree.Drag = new Class({
 				item.getElement().removeEvent('mouseleave', this.bound.leave).removeEvent('mouseenter', this.bound.enter);
 			}, this);
 			Mif.Tree.Drag.current.getDOM('wrapper').removeClass('mif-tree-draggable');
+			this.scroller.stop();
 			var dropZone=Mif.Tree.Drag.dropZone;
 			if(!dropZone || dropZone.where=='notAllowed'){
 				Mif.Tree.Drag.startZone.onstop();
@@ -94,10 +96,16 @@ Mif.Tree.Drag = new Class({
 			}
 			if(dropZone.onstop) dropZone.onstop();
 			dropZone.drop();
+			
 		});
 		
 		this.addEvent('drop', this.bound.end);
 		this.addEvent('emptydrop', this.bound.end);
+		
+		this.scroller=new Scroller(tree.container,{area:20, velocity: 0.6});
+		
+		
+		
 	},
 	
 	end: function(){
@@ -105,7 +113,7 @@ Mif.Tree.Drag = new Class({
 	},
 	
 	getElement: function(){
-		return this.tree.wrapper;
+		return this.tree.container;
 	},
 	
 	addToGroups: function(groups){
@@ -145,7 +153,6 @@ Mif.Tree.Drag = new Class({
 	},
 	
 	leave: function(event){
-	
 		var dropZone=Mif.Tree.Drag.dropZone;
 		if(dropZone){
 			dropZone.where='notAllowed';
@@ -164,6 +171,7 @@ Mif.Tree.Drag = new Class({
 		$clear(this.scrolling);
 		this.scrolling=null;
 		this.target=false;
+		this.scroller.stop();
 	},
 	
 	enter: function(event, zone){
@@ -176,7 +184,8 @@ Mif.Tree.Drag = new Class({
 	},
 	
 	onenter: function(){
-		this.onleave()
+		this.onleave();
+		this.scroller.start();
 	},
 	
 	getZone: function(target){//private leave/enter
@@ -199,35 +208,6 @@ Mif.Tree.Drag = new Class({
 			var zone=Mif.Tree.Drag.dropZone;
 			if(zone) zone.where='notAllowed';
 			this.stop(event);
-		}
-	},
-	
-	autoScroll: function(){
-		var y=this.y;
-		if(y==-1) return;
-		var container=this.tree.container;
-		var top=y-container.scrollTop;
-		var bottom=container.clientHeight-top;
-		var sign=0;
-		if(top<this.tree.height){
-			var delta=top;
-			sign=1;
-		}else if(bottom<this.tree.height){
-			var delta=bottom;
-			sign=-1;
-		}
-		if(sign && !this.scrolling){
-			this.scrolling=function(node){
-				if(y!=this.y){
-					y=this.y;
-					delta = (sign==1 ? (y-container.scrollTop) : (container.clientHeight-y+container.scrollTop))||1;
-				}
-				container.scrollTop=container.scrollTop-sign*this.options.scrollSpeed/delta;
-			}.periodical(this.options.scrollDelay, this, [sign])
-		}
-		if(!sign){
-			$clear(this.scrolling);
-			this.scrolling=null;
 		}
 	},
 	
@@ -257,7 +237,7 @@ Mif.Tree.Drag = new Class({
 	},
 
 	ondrag: function(event){
-		this.autoScroll();
+		//this.autoScroll();
 		
 		if(!this.checkTarget()) return;
 		
@@ -306,10 +286,20 @@ Mif.Tree.Drag = new Class({
 	
 	addGhost: function(){
 		var ghost=new Element('span').addClass('mif-tree-ghost mif-tree-draggable mif-tree-wrapper');
-		ghost.adopt(Mif.Tree.Draw.node(this.current).getElement('.mif-tree-light'))
-		.injectInside(document.body).setStyle('position', 'absolute');
+		ghost.adopt(Mif.Tree.Draw.node(this.current).getElement('.mif-tree-light')).setStyle('display', 'block').setStyle('position', 'relative').setStyle('overflow', 'hidden');
 		Mif.Tree.Drag.ghostIcon=new Element('span', {'class': 'mif-tree-ghost-icon mif-tree-ghost-notAllowed'}).inject(ghost.getElement('.mif-tree-left'), 'after');
-		Mif.Tree.Drag.ghost=ghost;
+		Mif.Tree.Drag.ghost=new Mif.ShadowContainer({
+			offsets:{//max 6
+				t: -3,
+				r: 3,
+				b: 3,
+				l: -3
+			},
+			opacity: 0.7
+		}).setContent(ghost).setStyles({
+			position: 'absolute',
+			top:-1000
+		}).inject(document.body).container;
 	},
 	
 	checkTarget: function(){

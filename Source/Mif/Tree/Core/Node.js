@@ -23,10 +23,11 @@ Mif.Tree.Node = new Class({
 			$mix(this.property, this.tree.types[type]);
 		}, this);
 		$mix(this.property, $unlink(this.tree.defaults));
+		if(this.property.id) Mif.ids[this.property.id]=this;
 	},
 	
 	getDOM: function(what){
-		var node=$(this.tree.DOMidPrefix+this.UID);
+		var node=$('mif-tree-'+this.UID);
 		if(what=='node') return node;
 		var wrapper=node.getFirst();
 		if(what=='wrapper') return wrapper;
@@ -43,7 +44,7 @@ Mif.Tree.Node = new Class({
 		animate=$pick(animate, this.property.animateToggle, this.tree.options.animateToggle);
 		var tree=this.tree;
 		var parent=this.getParent();
-		if(parent && parent.$toggling && animate){	
+		if(parent && (parent.$toggling||!parent.isOpen()) && animate){	
 			var self=this;
 			function toggle_child(){
 				self.toggle(state, animate);

@@ -8,7 +8,7 @@ Mif.TreeGrid.implement({
 	},
 	
 	attachSelect: function(event){
-		if(!['icon', 'name', 'node'].contains(this.mouse.target)) return;
+		if(!['icon', 'name', 'row'].contains(this.mouse.target)) return;
 		var node=this.mouse.node;
 		if(!node) return;
 		this.select(node);

@@ -6,10 +6,15 @@ height:100%;
 overflow:auto;
 color:#000;
 position:absolute;
+border:solid 1px #d2d2d2
+}
+
+.mif-tree-focused{
+border:solid 1px #47a5c9;
 }
 
 .mif-tree-wrapper{
-position: absolute;
+position: relative;
 margin:0;
 padding:0;
 overflow:auto;
@@ -19,10 +24,6 @@ white-space:nowrap;
 cursor:default;
 border-collapse:collapse;
 line-height:19px;
-}
-
-.mif-browser-presto .mif-tree-wrapper{
-border-bottom:solid 17px transparent;
 }
 
 .mif-tree-wrapper span{
@@ -48,6 +49,7 @@ background-color:#dcd7ab;
 vertical-align:top;
 /* width:1%; */
 white-space:nowrap;
+padding:0;
 }
 
 .mif-tree-wrapper:focus{

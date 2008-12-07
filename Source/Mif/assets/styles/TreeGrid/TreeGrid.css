@@ -1,6 +1,6 @@
 /*@global*/
 
-.mif-tree-container{
+.mif-treegrid-container{
 width:100%;
 height:100%;
 overflow:auto;
@@ -8,7 +8,7 @@ color:#000;
 position:absolute;
 }
 
-.mif-tree-wrapper{
+.mif-treegrid-wrapper{
 position: absolute;
 margin:0;
 padding:0;
@@ -37,7 +37,7 @@ overflow:hidden;
 display:inline-block;
 } */
 
-.mif-browser-presto .mif-tree-wrapper{
+.mif-browser-presto .mif-treegrid-wrapper{
 border-bottom:solid 17px transparent;
 }
 
@@ -46,7 +46,7 @@ border-bottom:solid 17px transparent;
 padding-left:18px;
 }
 
-.mif-tree-wrapper span{
+.mif-treegrid-wrapper span{
 display: table-cell;
 vertical-align: middle;
 height:19px;
@@ -54,40 +54,40 @@ line-height:19px;
 cursor:inherit;
 }
 
-.mif-browser-trident .mif-tree-wrapper span{
+.mif-browser-trident .mif-treegrid-wrapper span{
 display:inline-block;
 }
 
-/*.mif-tree-bg-selected{
+/*.mif-treegrid-bg-selected{
 background-color:#dcd7ab;
 }*/
 
-.mif-tree-wrapper td{
+.mif-treegrid-wrapper td{
 vertical-align:top;
 /* width:1%; */
 white-space:nowrap;
 }
 
-.mif-tree-wrapper:focus{
+.mif-treegrid-wrapper:focus{
 outline:0;
 }
 
-.mif-tree-children{
-padding-left:18px;
+.mif-treegrid-children{
+/* padding-left:18px; */
 /*width:18px;*/
 }
 
-.mif-tree-node{
+.mif-treegrid-node{
 /*width:18px;*/
 /* background:url('../../images/TreeGrid/line.gif') repeat-y 8px 0px; */
 position: relative;
 }
 
-/* .mif-tree-node-last{
+/* .mif-treegrid-node-last{
 background:url('../../images/TreeGrid/line.gif') no-repeat 8px 0px;
 } */
 
-.mif-tree-name{
+.mif-treegrid-name{
 padding-left:4px;
 }
 
@@ -97,7 +97,7 @@ border-bottom:solid 1px #eee;
 }
 
 
-/* .mif-tree-node-wrapper{
+/* .mif-treegrid-node-wrapper{
 background:url('../../images/TreeGrid/horizontal-line.gif') no-repeat 9px center;
 } */
 
@@ -106,7 +106,7 @@ background:url('../../images/TreeGrid/horizontal-line.gif') no-repeat 9px center
 
 /*@gadjet*/
 
-.mif-tree-gadjet{
+.mif-treegrid-gadjet{
 background-image:url('../../images/TreeGrid/arrows.gif');
 padding-left: 16px;
 z-index:1;
@@ -115,28 +115,28 @@ background-repeat:no-repeat;
 cursor:default;
 }
 
-.mif-tree-gadjet-none{
+.mif-treegrid-gadjet-none{
 background:none;
 }
 
-.mif-tree-gadjet-minus{
+.mif-treegrid-gadjet-minus{
 background-position: -16px 50%;
 }
 
-.mif-tree-gadjet-plus{
+.mif-treegrid-gadjet-plus{
 background-position: 0px 50%;
 }
 
 
-.mif-tree-hover-gadjet .mif-tree-gadjet-minus{
+.mif-treegrid-hover-gadjet .mif-treegrid-gadjet-minus{
 background-position: -48px 50%;
 }
 
-.mif-tree-hover-gadjet .mif-tree-gadjet-plus{
+.mif-treegrid-hover-gadjet .mif-treegrid-gadjet-plus{
 background-position: -32px 50%;
 }
 
-/*.mif-tree-gadjet-hover{
+/*.mif-treegrid-gadjet-hover{
 background-image:url('../../Source/assets/../../Source/assets/images/gadjets-hover.gif');
 }*/
 
@@ -145,7 +145,7 @@ background-image:url('../../Source/assets/../../Source/assets/images/gadjets-hov
 
 
 /*@icon*/
-.mif-tree-icon{
+.mif-treegrid-icon{
 margin-left:1px;
 padding-right:16px;
 background-position:0 center;
@@ -154,27 +154,27 @@ background-repeat:no-repeat;
 cursor:inherit;
 }
 
-.mif-tree-open-icon{
+.mif-treegrid-open-icon{
 background-image:url('../../images/TreeGrid/folders.gif');
 }
 
-.mif-tree-close-icon{
+.mif-treegrid-close-icon{
 background-image:url('../../images/TreeGrid/folders.gif');
 }
 
-.mif-tree-loader-open-icon,.mif-tree-loader-close-icon{
+.mif-treegrid-loader-open-icon,.mif-treegrid-loader-close-icon{
 background-image:url('../../images/TreeGrid/mootree_loader.gif');
 }
 
-.mif-tree-book-icon{
+.mif-treegrid-book-icon{
 background-image:url('../../images/TreeGrid/book_icon.gif');
 }
 
-.mif-tree-bin-open-icon{
+.mif-treegrid-bin-open-icon{
 background-image:url('../../images/TreeGrid/bin_open_icon.gif');
 }
 
-.mif-tree-bin-close-icon{
+.mif-treegrid-bin-close-icon{
 background-image:url('../../images/TreeGrid/bin_close_icon.gif');
 }
 
@@ -182,7 +182,7 @@ background-image:url('../../images/TreeGrid/bin_close_icon.gif');
 
 
 /*@drag and drop*/
-.mif-tree-pointer{
+.mif-treegrid-pointer{
 height:1px;
 overflow: hidden;
 position: absolute;
@@ -192,41 +192,41 @@ background-color:#3891e0;
 }
 
 
-.mif-tree-ghost{
+.mif-treegrid-ghost{
 
 }
 
-.mif-tree-ghost-icon{
+.mif-treegrid-ghost-icon{
 padding-left:16px;
 background-repeat:no-repeat;
 background-image:url('../../images/TreeGrid/dropzone.gif');
 }
 
-.mif-tree-ghost-after{
+.mif-treegrid-ghost-after{
 background-position:-64px 2px;
 }
 
-.mif-tree-ghost-before{
+.mif-treegrid-ghost-before{
 background-position:-48px 2px;
 }
 
-.mif-tree-ghost-between{
+.mif-treegrid-ghost-between{
 background-position:-16px 2px;
 }
 
-.mif-tree-ghost-inside{
+.mif-treegrid-ghost-inside{
 background-position:-0px 2px;
 }
 
-.mif-tree-ghost-notAllowed{
+.mif-treegrid-ghost-notAllowed{
 background-position:-32px 2px;
 }
 
-.mif-tree-drag-current{
+.mif-treegrid-drag-current{
 /*background-color:#cfcfd8;*/
 }
 
-.mif-tree-replace{
+.mif-treegrid-replace{
 background-color:#99c8fb;
 }
 
@@ -234,23 +234,23 @@ background-color:#99c8fb;
 
 
 /*@checkboxes*/
-.mif-tree-checkbox{
+.mif-treegrid-checkbox{
 padding-left:18px;
 }
 
-.mif-tree-node-checked, .mif-tree-node-checked .mif-tree-checkbox{
+.mif-treegrid-node-checked, .mif-treegrid-node-checked .mif-treegrid-checkbox{
 background:url('../../images/TreeGrid/checked.gif') center 2px no-repeat;
 }
 
-.mif-tree-node-unchecked, .mif-tree-node-unchecked .mif-tree-checkbox{
+.mif-treegrid-node-unchecked, .mif-treegrid-node-unchecked .mif-treegrid-checkbox{
 background:url('../../images/TreeGrid/unchecked.gif') center 2px no-repeat;
 }
 
-.mif-tree-node-checked-selected{
+.mif-treegrid-node-checked-selected{
 background:url('../../images/TreeGrid/checked_selected.gif') center 2px no-repeat;
 }
 
-.mif-tree-node-unchecked-selected{
+.mif-treegrid-node-unchecked-selected{
 background:url('../../images/TreeGrid/unchecked_selected.gif') center 2px no-repeat;
 }
 
@@ -258,7 +258,7 @@ background:url('../../images/TreeGrid/unchecked_selected.gif') center 2px no-rep
 
 
 /*@rename*/
-.mif-tree-rename{
+.mif-treegrid-rename{
 display: inline;
 line-height: 14px;
 height:14px;
@@ -278,68 +278,68 @@ border:solid 1px black;
 
 
 
+
+
+.mif-treegrid-hover-row{
+background:#efefef;
+}
+
 .mif-treegrid-selected{
-background:#6ab1cc;
+background:#b1d7e4;
 }
-
-.mif-treegrid-hover{
-background:#d6d8d8;
-}
-
-
 
 
 /*node skin*/
 
-.mif-tree-light{
+/* .mif-treegrid-light{
 overflow:hidden;
 }
 
-.mif-tree-left{
-overflow:hidden;
-padding-left:4px;
-}
-
-.mif-tree-right{
+.mif-treegrid-left{
 overflow:hidden;
 padding-left:4px;
 }
 
-.mif-tree-hover-name .mif-tree-light, .mif-tree-hover-icon .mif-tree-light{
+.mif-treegrid-right{
+overflow:hidden;
+padding-left:4px;
+}
+
+.mif-treegrid-hover-name .mif-treegrid-light, .mif-treegrid-hover-icon .mif-treegrid-light{
 background:url('../../images/TreeGrid/tree-bg.gif') center -95px repeat-x;
 }
 
-.mif-tree-hover-name .mif-tree-left, .mif-tree-hover-icon .mif-tree-left{
+.mif-treegrid-hover-name .mif-treegrid-left, .mif-treegrid-hover-icon .mif-treegrid-left{
 background:url('../../images/TreeGrid/tree-bg.gif') left -57px no-repeat;
 }
 
-.mif-tree-hover-name .mif-tree-right, .mif-tree-hover-icon .mif-tree-right{
+.mif-treegrid-hover-name .mif-treegrid-right, .mif-treegrid-hover-icon .mif-treegrid-right{
 background:url('../../images/TreeGrid/tree-bg.gif') right -76px no-repeat;
 }
 
-.mif-tree-node-selected .mif-tree-light{
+.mif-treegrid-node-selected .mif-treegrid-light{
 background:url('../../images/TreeGrid/tree-bg.gif') center -38px repeat-x;
 }
 
-.mif-tree-node-selected .mif-tree-left{
+.mif-treegrid-node-selected .mif-treegrid-left{
 background:url('../../images/TreeGrid/tree-bg.gif') left -0px no-repeat;
 }
 
-.mif-tree-node-selected .mif-tree-right{
+.mif-treegrid-node-selected .mif-treegrid-right{
 background:url('../../images/TreeGrid/tree-bg.gif') right -19px no-repeat;
 }
 
-.mif-tree-draggable .mif-tree-light{
+.mif-treegrid-draggable .mif-treegrid-light{
 background:url('../../images/TreeGrid/tree-bg.gif') center -152px repeat-x;
 }
 
-.mif-tree-draggable .mif-tree-left{
+.mif-treegrid-draggable .mif-treegrid-left{
 background:url('../../images/TreeGrid/tree-bg.gif') left -114px no-repeat;
 }
 
-.mif-tree-draggable .mif-tree-right{
+.mif-treegrid-draggable .mif-treegrid-right{
 background:url('../../images/TreeGrid/tree-bg.gif') right -133px no-repeat;
-}
+} */
 /*end node skin*/
 
 
@@ -347,7 +347,7 @@ background:url('../../images/TreeGrid/tree-bg.gif') right -133px no-repeat;
 
 /* 
 
-.mif-tree-light{
+.mif-treegrid-light{
 position: absolute;
 height:19px;
 background:url('../../images/TreeGrid/tree-bg.gif') center -95px repeat-x;
@@ -355,7 +355,7 @@ margin-left:-1px;
 width:0;
 }
 
-.mif-tree-light-left{
+.mif-treegrid-light-left{
 position: absolute;
 width:100%;
 height:100%;
@@ -365,7 +365,7 @@ background-position: left -57px;
 }
 
 
-.mif-tree-light-right{
+.mif-treegrid-light-right{
 position: absolute;
 width:100%;
 height:100%;
@@ -375,7 +375,7 @@ background:url('../../images/TreeGrid/tree-bg.gif') right -76px no-repeat;
 
 
 
-.mif-tree-light-selected{
+.mif-treegrid-light-selected{
 position: absolute;
 height:19px;
 background:url('../../images/TreeGrid/tree-bg.gif') 50% -38px repeat-x;
@@ -383,7 +383,7 @@ margin-left:-1px;
 overflow:hidden;
 }
 
-.mif-tree-light-left-selected{
+.mif-treegrid-light-left-selected{
 top:0;
 left:0;
 position: absolute;
@@ -396,7 +396,7 @@ overflow:hidden;
 }
 
 
-.mif-tree-light-right-selected{
+.mif-treegrid-light-right-selected{
 position: absolute;
 top:0;
 left:0;
@@ -410,7 +410,7 @@ overflow:hidden;
 
 
 
-.mif-tree-light-dragged{
+.mif-treegrid-light-dragged{
 position: absolute;
 height:19px;
 background:url('../../images/TreeGrid/tree-bg.gif') 50% -152px repeat-x;
@@ -418,7 +418,7 @@ margin-left:-1px;
 overflow:hidden;
 }
 
-.mif-tree-light-left-dragged{
+.mif-treegrid-light-left-dragged{
 top:0;
 left:0;
 position: absolute;
@@ -431,7 +431,7 @@ overflow:hidden;
 }
 
 
-.mif-tree-light-right-dragged{
+.mif-treegrid-light-right-dragged{
 position: absolute;
 top:0;
 left:0;
@@ -445,22 +445,22 @@ overflow:hidden;
 
 
 
-.mif-tree-light-row .mif-tree-light, .mif-tree-light-row .mif-tree-light-selected, .mif-tree-light-row .mif-tree-light-dragged{
+.mif-treegrid-light-row .mif-treegrid-light, .mif-treegrid-light-row .mif-treegrid-light-selected, .mif-treegrid-light-row .mif-treegrid-light-dragged{
 margin-left:0;
 }
 
-.mif-tree-light-row .mif-tree-light{
+.mif-treegrid-light-row .mif-treegrid-light{
 background:#eff3f8;
 }
 
-.mif-tree-light-row .mif-tree-light-selected{
+.mif-treegrid-light-row .mif-treegrid-light-selected{
 background:#bcd5f3;
 }
 
-.mif-tree-light-row .mif-tree-light-dragged{
+.mif-treegrid-light-row .mif-treegrid-light-dragged{
 background:#eee;
 }
 
-.mif-tree-light-row .mif-tree-light *, .mif-tree-light-row .mif-tree-light-selected *, .mif-tree-light-row .mif-tree-light-dragged *{
+.mif-treegrid-light-row .mif-treegrid-light *, .mif-treegrid-light-row .mif-treegrid-light-selected *, .mif-treegrid-light-row .mif-treegrid-light-dragged *{
 background:none;
 } */

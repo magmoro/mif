@@ -32,7 +32,7 @@ Mif.TreeGrid.Node = new Class({
 		if(what=='wrapper') return wrapper;
 		if(what=='row') return node.getParent().getParent();
 		if(what=='children') return node.getParent().getParent().getNext();
-		return wrapper.getElement('.mif-tree-'+what);
+		return wrapper.getElement('.mif-treegrid-'+what);
 	},
 	
 	getGadjetType: function(){

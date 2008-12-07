@@ -53,8 +53,7 @@ Mif.Tree = new Class({
 		};
 		this.updateOpenState();
 		if(this.options.expandTo) this.initExpandTo();
-		Mif.Tree.UID++;
-		this.DOMidPrefix='mif-tree-';
+		this.UID=++Mif.Tree.UID;
 		//this.wrapper=new Element('div').addClass('mif-tree-wrapper').injectInside(this.container);
 		this.container=new Element('div', {'class': 'mif-tree-container'}).inject(this.options.container);
 		this.container.set('html', '<table><tbody><tr><td></td></tr></tbody></table>').getFirst().addClass('mif-tree-wrapper');
@@ -63,6 +62,13 @@ Mif.Tree = new Class({
 		this.initScroll();
 		this.initSelection();
 		this.initHover();
+		this.initPlugins();
+	},
+	
+	initPlugins: function(){
+		if(Mif.Tree.KeyNav){
+			new Mif.Tree.KeyNav(this);
+		}
 	},
 	
 	initEvents: function(){
@@ -71,15 +77,40 @@ Mif.Tree = new Class({
 			mouseover: this.mouse.bindWithEvent(this),
 			mouseout: this.mouse.bindWithEvent(this),
 			mouseleave: this.mouseleave.bind(this),
-			mousedown: $lambda(false),
+			mousedown: function(event){event.preventDefault()},
 			click: this.toggleClick.bindWithEvent(this),
 			dblclick: this.toggleDblclick.bindWithEvent(this),
 			keydown: this.keyDown.bindWithEvent(this),
 			keyup: this.keyUp.bindWithEvent(this)
 		});
+		this.wrapper.addEvent('click', this.focus.bind(this));
+		document.addEvent('click', this.blurOnClick.bind(this));
 		if(Browser.Engine.trident){
 			this.wrapper.addEvent('selectstart', $lambda(false));
 		}
+	},
+	
+	blurOnClick: function(event){
+		var target=event.target;
+		while(target){
+			target=target.parentNode;
+			if(target==this.container) return;
+		}
+		this.blur();
+	},
+	
+	focus: function(){
+		if(this.focused) return;
+		this.focused=true;
+		this.container.addClass('mif-tree-focused');
+		this.fireEvent('focus');
+	},
+	
+	blur: function(){
+		if(!this.focused) return;
+		this.focused=false;
+		this.container.removeClass('mif-tree-focused');
+		this.fireEvent('blur');
 	},
 	
 	$getIndex: function(){//set array of visible nodes.
@@ -141,7 +172,7 @@ Mif.Tree = new Class({
 		var x=event.page.x-position.x;
 		var y=event.page.y-position.y;
 		var wrapper=this.wrapper;
-		if((y-wrapper.scrollTop>wrapper.clientHeight)||(x-wrapper.scrollLeft>wrapper.clientWidth)){//scroll line
+		if((y-wrapper.scrollTop>wrapper.clientHeight)||(x-wrapper.scrollLeft>wrapper.clientWidth)){
 			y=-1;
 		};
 		return {x:x, y:y};
@@ -169,20 +200,20 @@ Mif.Tree = new Class({
 	},
 	
 	initScroll: function(){
-		this.scroll=new Fx.Scroll(this.container);
+		this.scroll=new Fx.Scroll(this.container, {link: 'cancel'});
 	},
 	
 	scrollTo: function(node){
 		var position=node.getVisiblePosition();
 		var top=position*this.height;
 		var up=top<this.container.scrollTop;
-		var down=top>(this.container.scrollTop+this.container.clientHeight);
+		var down=top>(this.container.scrollTop+this.container.clientHeight-this.height);
 		if(position==-1 || ( !up && !down ) ) {
 			this.scroll.fireEvent('complete');
 			return false;
 		}
 		if(this.animateScroll){
-			this.scroll.start(this.container.scrollLeft, top-(down ? this.container.clientHeight-this.height : 0));
+			this.scroll.start(this.container.scrollLeft, top-(down ? this.container.clientHeight-this.height : this.height));
 		}else{
 			this.scroll.set(this.container.scrollLeft, top-(down ? this.container.clientHeight-this.height : 0));
 			this.scroll.fireEvent('complete');
