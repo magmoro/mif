@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<deps>
+	<mootools extern="true">
+		<mootools desc="mootools core" />
+	</mootools>
+	<Mif deps="Core">
+		<Core>
+			<Mif deps="/mootools" desc="Mif core" />
+		</Core>
+		<Tree>
+			<Core group="true" desc="Tree control">
+				<Tree desc="Mif.Tree control class" css="Tree/Tree.css" />
+				<Node desc="Mif.Tree node class" />
+				<Draw desc="drawing Mif.Tree(create html code)" />
+				<Selection desc="implements selection" />
+				<Hover desc="implements hover effect" ></Hover>
+				<Load desc="load nodes from json, load json" />
+				<mootools-patch desc="fix mootools bugs patch" />
+			</Core>
+			<More deps="../Core">
+				<KeyNav desc="implement Mif.Tree keyboard navigation" />
+				<Sort desc="make Mif.Tree sortable" />
+				<Transform desc="implements move, copy, romove functionality" />
+				<Drag deps="../Transform" desc="implements Drag'n'Drop" />
+				<Drag.Element deps="../Drag" desc="dom elements can be used as drop containers" />
+				<Rename desc="implements inline rename node functionality" />
+				<Checkbox desc="checkbox implementation" />
+				<CookieStorage desc="cookie collapse/expand state storage" />
+				<Search desc="implement search/filter functionality" />
+			</More>
+		</Tree>
+	</Mif>
+</deps>
