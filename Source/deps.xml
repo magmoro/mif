@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <deps>
-	<extern>
+	<Extern>
 		<mootools>
 			<mootools desc="mootools core" />
 		</mootools>
-	</extern>
-	<Mif deps="Core">
+	</Extern>
+	<Source deps="Core">
 		<Core>
-			<Mif deps="/extern/mootools" desc="Mif core" />
+			<Mif deps="/Extern/mootools" desc="Mif core" />
 		</Core>
 		<Tree>
 			<Core group="true" desc="Tree control">
@@ -32,5 +32,5 @@
 				<Search desc="implement search/filter functionality" />
 			</More>
 		</Tree>
-	</Mif>
+	</Source>
 </deps>
