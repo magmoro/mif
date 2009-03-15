@@ -1,0 +1,12 @@
+
+.mif-tree-rename{
+display: inline;
+line-height: 14px;
+height:14px;
+cursor: default;
+overflow:hidden;
+font-family:sans-serif;
+font-size:11px;
+padding:1px 0;
+border:solid 1px black;
+}

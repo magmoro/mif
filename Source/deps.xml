@@ -24,10 +24,10 @@
 				<KeyNav desc="implement Mif.Tree keyboard navigation" />
 				<Sort desc="make Mif.Tree sortable" />
 				<Transform desc="implements move, copy, romove functionality" />
-				<Drag deps="../Transform" desc="implements Drag'n'Drop" />
+				<Drag deps="../Transform" desc="implements Drag'n'Drop" css="Tree/dnd.css" />
 				<Drag.Element deps="../Drag" desc="dom elements can be used as drop containers" />
-				<Rename desc="implements inline rename node functionality" />
-				<Checkbox desc="checkbox implementation" />
+				<Rename desc="implements inline rename node functionality" css="Tree/rename.css" />
+				<Checkbox desc="checkbox implementation" css="Tree/checkbox.css" />
 				<CookieStorage desc="cookie collapse/expand state storage" />
 				<Search desc="implement search/filter functionality" />
 			</More>

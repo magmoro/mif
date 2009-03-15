@@ -1,0 +1,19 @@
+.mif-tree-checkbox{
+padding-left:18px;
+}
+
+.mif-tree-node-checked, .mif-tree-node-checked .mif-tree-checkbox{
+background:url('../../images/Tree/checked.gif') center 2px no-repeat;
+}
+
+.mif-tree-node-unchecked, .mif-tree-node-unchecked .mif-tree-checkbox{
+background:url('../../images/Tree/unchecked.gif') center 2px no-repeat;
+}
+
+.mif-tree-node-checked-selected{
+background:url('../../images/Tree/checked_selected.gif') center 2px no-repeat;
+}
+
+.mif-tree-node-unchecked-selected{
+background:url('../../images/Tree/unchecked_selected.gif') center 2px no-repeat;
+}

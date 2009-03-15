@@ -1,0 +1,50 @@
+/*@drag and drop*/
+.mif-tree-pointer{
+height:1px;
+overflow: hidden;
+position: absolute;
+background-image:url('../../images/Tree/1.gif');
+background-repeat:repeat-x;
+background-color:#3891e0;
+}
+
+
+.mif-tree-ghost{
+
+}
+
+.mif-tree-ghost-icon{
+padding-left:16px;
+background-repeat:no-repeat;
+background-image:url('../../images/Tree/dropzone.gif');
+}
+
+.mif-tree-ghost-after{
+background-position:-64px 2px;
+}
+
+.mif-tree-ghost-before{
+background-position:-48px 2px;
+}
+
+.mif-tree-ghost-between{
+background-position:-16px 2px;
+}
+
+.mif-tree-ghost-inside{
+background-position:-0px 2px;
+}
+
+.mif-tree-ghost-notAllowed{
+background-position:-32px 2px;
+}
+
+.mif-tree-drag-current{
+/*background-color:#cfcfd8;*/
+}
+
+.mif-tree-replace{
+background-color:#99c8fb;
+}
+
+/*end drag and drop*/
