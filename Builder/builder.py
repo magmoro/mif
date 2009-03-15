@@ -1,0 +1,1 @@
+#!D:\python25\pythonimport cgi, simplejsonprint "Content-Type:text/html\n\n"form = cgi.FieldStorage()items=simplejson.loads(form['items'].value)compression=form['compression'].valueprint repr(items), compression
