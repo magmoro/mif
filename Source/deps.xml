@@ -8,7 +8,7 @@
 	</extern>
 	<Mif deps="Core">
 		<Core>
-			<Mif deps="/mootools" desc="Mif core" />
+			<Mif deps="/extern/mootools" desc="Mif core" />
 		</Core>
 		<Tree>
 			<Core group="true" desc="Tree control">
