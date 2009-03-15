@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <deps>
-	<mootools extern="true">
-		<mootools desc="mootools core" />
-	</mootools>
+	<extern>
+		<mootools>
+			<mootools desc="mootools core" />
+		</mootools>
+	</extern>
 	<Mif deps="Core">
 		<Core>
 			<Mif deps="/mootools" desc="Mif core" />

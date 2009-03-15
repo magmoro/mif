@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" version="-//W3C//DTD XHTML 1.1//EN" xml:lang="en">
+	<head>
+		<title>Mif Builder</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="builder.css"/>
+		<script type="text/javascript" src="../assets/scripts/mootools.js"></script>
+		<script type="text/javascript" src="builder.js"></script>
+		<script type="text/javascript">
+			window.addEvent('domready', function(){
+				var builder=new Builder({url:'../Source/deps.xml'});
+				builder.inject('container');
+			});
+		</script>
+	</head>
+	<body>
+		<h1><a href="http://mifjs.net"><span class="mif-m">M</span><span class="mif-i">i</span><span class="mif-f">f</span><span class="mif-dot"></a> <span>Builder</span></h1>
+		<div id="container" />
+	</body>
+</html>
