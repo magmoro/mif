@@ -11,25 +11,41 @@
 			<Mif deps="/Extern/mootools" desc="Mif core" />
 		</Core>
 		<Tree>
-			<Core group="true" desc="Tree control">
-				<Tree desc="Mif.Tree control class" css="Tree/Tree.css" />
+			<Base group="true" desc="Tree control">
+				<Tree desc="Mif.Tree control class" />
 				<Node desc="Mif.Tree node class" />
 				<Draw desc="drawing Mif.Tree(create html code)" />
 				<Selection desc="implements selection" />
-				<Hover desc="implements hover effect" ></Hover>
+				<Hover desc="implements hover effect" />
 				<Load desc="load nodes from json, load json" />
 				<mootools-patch desc="fix mootools bugs patch" />
-			</Core>
-			<More deps="../Core">
-				<KeyNav desc="implement Mif.Tree keyboard navigation" />
-				<Sort desc="make Mif.Tree sortable" />
-				<Transform desc="implements move, copy, romove functionality" />
-				<Drag deps="../Transform" desc="implements Drag'n'Drop" css="Tree/dnd.css" />
-				<Drag.Element deps="../Drag" desc="dom elements can be used as drop containers" />
-				<Rename desc="implements inline rename node functionality" css="Tree/rename.css" />
-				<Checkbox desc="checkbox implementation" css="Tree/checkbox.css" />
-				<CookieStorage desc="cookie collapse/expand state storage" />
-				<Search desc="implement search/filter functionality" />
+			</Base>
+			<Plugins deps="../Base">
+				<KeyNav desc="implement Mif.Tree keyboard navigation">
+					<KeyNav />
+				</KeyNav>
+				<Sort desc="make Mif.Tree sortable">
+					<Sort />
+				</Sort>
+				<Transform desc="implements move, copy, romove functionality">
+					<Transform />
+				</Transform>
+				<DnD>
+					<Drag deps="../../Transform" desc="implements Drag'n'Drop" />
+					<Drag.Element deps="../Drag" desc="dom elements can be used as drop containers" />
+				</DnD>
+				<Rename desc="implements inline rename node functionality">
+					<Rename />
+				</Rename>
+				<Checkbox desc="checkbox implementation">
+					<Checkbox />
+				</Checkbox>
+				<CookieStorage desc="cookie collapse/expand state storage">
+					<CookieStorage />
+				</CookieStorage>
+				<Search desc="implement search/filter functionality">
+					<Search />
+				</Search>
 			</More>
 		</Tree>
 	</Source>
