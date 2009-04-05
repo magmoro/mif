@@ -4,8 +4,8 @@ import cgi, simplejson, os, shutil
 from lxml import etree
 
 
-print "content-disposition: attachment; filename=mif.js\n"
-#print "Content-Type:text/html\n"
+#print "content-disposition: attachment; filename=mif.js\n"
+print "Content-Type:text/html\n"
 
 form = cgi.FieldStorage()
 item_fields=form["items[]"]
@@ -32,17 +32,16 @@ os.mkdir(build_dir)
 """
 
 
-
 tree=etree.parse('../Source/deps.xml')
-node=tree.find('/Source/Core/Mif/')
-
-def get_nodes(items):
-	nodes=[]
-	for item in items:
-		nodes.append(tree.find(item[5:]))
-	return nodes
-
-nodes=get_nodes(items)
+nodes=[]
+def walk(node):
+	for child in node:
+		path=tree.getpath(child)
+		if path in items:
+			nodes.append(child)
+		walk(child)
+		
+walk(tree.getroot())
 
 def get_file_paths(nodes):
 	file_paths=[]
@@ -56,10 +55,37 @@ def get_file_paths(nodes):
 	return file_paths
 		
 file_paths=get_file_paths(nodes)
-
-file=''
+#js
+scripts=''
 
 for file_name in file_paths:
-	file+=open(current_dir+'/../'+file_name+'.js').read()
+	scripts+='<script type="text/javascript" src="/'+file_name+'.js'+'"></script>\n'	
+
+open('../Build/scripts', 'w').write(scripts)
+
+
+#css
+
+def process_css(css):
+	return css
+
+def get_folders(file_paths):
+	folders=[]
+	for file in file_paths:
+		folder='/'.join(file.split('/')[1:-1])
+		if not folder in folders:
+			folders.append(folder)
+	return folders
 	
-print file
+folders=get_folders(file_paths)
+print '<pre>'
+css=''
+for folder in folders:
+	try:
+		file=open('../Source/resources/'+folder+'/.css').read()
+		css+=process_css(file)+'\n'
+	except:
+		pass
+		
+open('../Build/mif.css', 'w').write(css)
+

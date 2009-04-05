@@ -4,7 +4,7 @@ var Builder=new  Class({
 	
 	options:{
 		url: 'deps.xml',
-		downloadUrl: 'builder.py'
+		downloadUrl: 'download.py'
 	},
 	
 	initialize: function(options){
@@ -47,7 +47,7 @@ var Builder=new  Class({
 				mainHtml.push(this.makeNodeHtml(child));
 			};
 		}
-		this.element.set('html','<form action="builder.py" method="post">'+
+		this.element.set('html','<form action="'+this.options.downloadUrl+'" method="post">'+
 			'<div class="main" id="main">'+mainHtml.join('')+'</div>'+
 			'<div class="extern" id="extern"><h2>External scripts</h2>'+externHtml.join('')+'</div>'+
 			'<div class="compress"><h2>Compressor</h2>'+

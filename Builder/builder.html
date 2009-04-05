@@ -8,7 +8,7 @@
 		<script type="text/javascript" src="builder.js"></script>
 		<script type="text/javascript">
 			window.addEvent('domready', function(){
-				var builder=new Builder({url:'../Source/deps.xml'});
+				var builder=new Builder({url:'../Source/deps.xml', downloadUrl: 'build.py'});
 				builder.inject('container');
 			});
 		</script>

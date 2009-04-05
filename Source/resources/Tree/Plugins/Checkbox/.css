@@ -1,3 +1,4 @@
+/*@mif-tree-checkbox*/
 .mif-tree-checkbox{
 padding-left:18px;
 }
@@ -17,3 +18,4 @@ background:url('../../images/Tree/checked_selected.gif') center 2px no-repeat;
 .mif-tree-node-unchecked-selected{
 background:url('../../images/Tree/unchecked_selected.gif') center 2px no-repeat;
 }
+/*@end mif-tree-checkbox*/
