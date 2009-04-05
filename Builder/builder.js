@@ -20,9 +20,9 @@ var Builder=new  Class({
 			onComplete: function(xmlString){
 				var xmlDoc=XML.rootFromString(xmlString);
 				this.xmlDoc=xmlDoc;
-				console.log(xmlDoc);
 				this.makeHtml(xmlDoc);
 				this.initEvents();
+				this.fireEvent('ready');
 			}.bind(this)
 		}).send();
 	},
@@ -201,7 +201,9 @@ var Builder=new  Class({
 	},
 	
 	checkAll: function(){
-		//
+		$('main').getElements('input[type="checkbox"]').each(function(checkbox){
+			this.check(checkbox);
+		}, this);
 	}
 	
 });
