@@ -17,7 +17,7 @@ html=open(path+'/.html').read()
 
 js='<script type="text/javascript" src="false.js"></script>'
 css='<link rel="stylesheet" href="false.css" type="text/css"></link>'
-title=path_parts[0]+' &mdash; '+path_parts[1]+'. Mif Demo'
+title=path_parts[0]+' &mdash; '+path_parts[1]+'. Mif Demo.'
 
 html=html.replace('{{js}}',js).replace('{{css}}',css).replace('{{title}}',title)
 print html
