@@ -46,7 +46,7 @@
 				<Search desc="implement search/filter functionality">
 					<Search />
 				</Search>
-			</More>
+			</Plugins>
 		</Tree>
 	</Source>
 </deps>

@@ -20,6 +20,7 @@ var Builder=new  Class({
 			onComplete: function(xmlString){
 				var xmlDoc=XML.rootFromString(xmlString);
 				this.xmlDoc=xmlDoc;
+				console.log(xmlDoc);
 				this.makeHtml(xmlDoc);
 				this.initEvents();
 			}.bind(this)
@@ -66,12 +67,14 @@ var Builder=new  Class({
 		for(var i=0, l=children.length;i<l;i++){
 			var child=children[i];
 			if(child.nodeType==3) continue;
+			var desc=child.getAttribute('desc') ? '<span class="desc"> &mdash; '+child.getAttribute('desc')+'</span>' : '';
 			if(child.childNodes.length>0 && !child.getAttribute('group')){
 				var hN='h'+(this.getLevel(child));
-				html.push('<'+hN+'>'+child.tagName+'</'+hN+'>');
+				
+				html.push('<'+hN+'>'+child.tagName+desc+'</'+hN+'>');
 				html.push('<div class="child">'+this.makeNodeHtml(child)+'</div>');
 			}else{
-				html.push('<div class="child"><label><input type="checkbox" name="items[]" value="'+this.getXpath(child)+'"/><span class="name">'+child.tagName+'</span><span class="desc"> &mdash; '+child.getAttribute('desc')+'</span></label></div>');
+				html.push('<div class="child"><label><input type="checkbox" name="items[]" value="'+this.getXpath(child)+'"/><span class="name">'+child.tagName+'</span>'+desc+'</label></div>');
 			}
 		}
 		return html.join('');
@@ -195,6 +198,10 @@ var Builder=new  Class({
 				
 			}
 		}, this);
+	},
+	
+	checkAll: function(){
+		//
 	}
 	
 });
