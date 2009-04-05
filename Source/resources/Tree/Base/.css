@@ -41,9 +41,6 @@ line-height:19px;
 cursor:inherit;
 }
 
-/*.mif-tree-bg-selected{
-background-color:#dcd7ab;
-}*/
 
 .mif-tree-wrapper td{
 vertical-align:top;
@@ -63,12 +60,12 @@ padding-left:18px;
 
 .mif-tree-node{
 /*width:18px;*/
-background:url('../../images/Tree/line.gif') repeat-y 8px 0px;
+background:url('line.gif') repeat-y 8px 0px;
 position: relative;
 }
 
 .mif-tree-node-last{
-background:url('../../images/Tree/line.gif') no-repeat 8px 0px;
+background:url('line.gif') no-repeat 8px 0px;
 }
 
 .mif-tree-name{
@@ -77,7 +74,7 @@ padding-left:4px;
 
 
 .mif-tree-node-wrapper{
-background:url('../../images/Tree/horizontal-line.gif') no-repeat 9px center;
+background:url('hline.gif') no-repeat 9px center;
 }
 
 /*@end global*/
