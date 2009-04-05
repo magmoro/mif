@@ -1,0 +1,6 @@
+
+Options FollowSymLinks ExecCGI
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule  ^(.*)$ show.py [L]

@@ -6,7 +6,6 @@ padding:0;
 html, body{
 width:100%;
 height:100%;
-overflow:hidden;
 font-family:Arial;
 }
 
@@ -34,4 +33,18 @@ font-size:35px;
 color:#1a7d35;
 border-bottom:solid 1px #c4c4c4;
 padding:2px;
+}
+
+.demo{
+padding:20px;
+}
+
+.demo a{
+display:block;
+color:#508fbe;
+line-height:1.5;
+}
+
+.demo a:hover{
+color:#d24853;
 }
