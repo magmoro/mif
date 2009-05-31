@@ -64,6 +64,14 @@ background:url('line.gif') repeat-y 8px 0px;
 position: relative;
 }
 
+.mif-tree-node-open{
+background-image:url('folder-open.gif');
+}
+
+.mif-tree-node-close{
+background-image:url('folder-close.gif');
+}
+
 .mif-tree-node-last{
 background:url('line.gif') no-repeat 8px 0px;
 }
@@ -83,12 +91,11 @@ background:url('hline.gif') no-repeat 9px center;
 /*@gadjet*/
 
 .mif-tree-gadjet{
-background-image:url('../../images/Tree/arrows.gif');
 padding-left: 16px;
 z-index:1;
 overflow:hidden;
-background-repeat:no-repeat;
 cursor:default;
+background:center center no-repeat;
 }
 
 .mif-tree-gadjet-none{
@@ -96,20 +103,22 @@ background:none;
 }
 
 .mif-tree-gadjet-minus{
-background-position: -16px 50%;
+background-image:url('arrow-open.gif');
 }
 
+
+
 .mif-tree-gadjet-plus{
-background-position: 0px 50%;
+background-image:url('arrow-close.gif');
 }
 
 
 .mif-tree-hover-gadjet .mif-tree-gadjet-minus{
-background-position: -48px 50%;
+background-image:url('arrow-open-hover.gif');
 }
 
 .mif-tree-hover-gadjet .mif-tree-gadjet-plus{
-background-position: -32px 50%;
+background-image:url('arrow-close-hover.gif');
 }
 
 /*.mif-tree-gadjet-hover{

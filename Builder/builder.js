@@ -74,7 +74,7 @@ var Builder=new  Class({
 				html.push('<'+hN+'>'+child.tagName+desc+'</'+hN+'>');
 				html.push('<div class="child">'+this.makeNodeHtml(child)+'</div>');
 			}else{
-				html.push('<div class="child"><label><input type="checkbox" name="items[]" value="'+this.getXpath(child)+'"/><span class="name">'+child.tagName+'</span>'+desc+'</label></div>');
+				html.push('<div class="child"><label><input type="checkbox" name="paths[]" value="'+this.getXpath(child)+'"/><span class="name">'+child.tagName+'</span>'+desc+'</label></div>');
 			}
 		}
 		return html.join('');

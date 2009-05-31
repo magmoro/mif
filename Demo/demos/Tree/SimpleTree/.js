@@ -4,11 +4,11 @@ window.addEvent('domready',function(){
 			//new Mif.Tree.Highlight(this);
 			new Mif.Tree.Drag(this);
 		},
-		container: $('tree_container'),// tree container
+		container: $('container'),// tree container
 		types: {// node types
 			folder:{
-				openIcon: 'mif-tree-open-icon',//css class open icon
-				closeIcon: 'mif-tree-close-icon'// css class close icon
+				openIcon: 'mif-tree-node-open',//css class open icon
+				closeIcon: 'mif-tree-node-close'// css class close icon
 			}
 		},
 		dfltType:'folder',//default node type

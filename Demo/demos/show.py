@@ -15,9 +15,10 @@ path_parts=uri_parts[-3:-1]
 path='/'.join(path_parts)
 html=open(path+'/.html').read()
 
-js='<script type="text/javascript" src="false.js"></script>'
-css='<link rel="stylesheet" href="false.css" type="text/css"></link>'
+js='<script type="text/javascript" src="/Build/mif.js"></script>'
+css='<link rel="stylesheet" href="/Build/mif.css" type="text/css"></link>'
 title=path_parts[0]+' &mdash; '+path_parts[1]+'. Mif Demo.'
+
 
 html=html.replace('{{js}}',js).replace('{{css}}',css).replace('{{title}}',title)
 print html

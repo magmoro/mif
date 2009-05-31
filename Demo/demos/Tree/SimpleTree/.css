@@ -1,9 +1,5 @@
-@import "../../../Source/Mif/assets/styles/Tree/Tree.css";
 
-@import "../../../Source/Mif/assets/styles/Utils/Shadow.css";
-
-
-#tree_container{
+#container{
 height:400px;
 width:250px;
 position:relative;
