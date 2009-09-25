@@ -36,8 +36,8 @@ class Build():
 	
 	def __init__(self):
 		self.resource_root='../Source/resources/'
-		self.build_root='../Build/'
-		self.deps_path='../Source/deps.xml'
+		self.build_root='../__build__/'
+		self.deps_path='../deps.xml'
 		self.tree=etree.parse(self.deps_path)
 		self.get_data()
 		self.get_nodes()
