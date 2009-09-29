@@ -1,0 +1,53 @@
+assets
+
+css, images
+
+
+Source/
+	assets/
+	   folder1/
+	       script1.css
+	       img1
+	       img2
+	       img3
+	   folder2/
+	       script21.css
+	       script22.css
+	       script23.css
+	       img21
+	       img22
+	   common/
+	       img
+    scripts.json
+    folder1/
+        script1.js
+        script2.js
+    folder2/
+        script21.js
+        script22.js
+        script23.js
+    folder3/
+        script3.js
+
+
+script1.js require script1.css, script1.css require img1, img2, folder2/img21, common/img
+
+script2.js require img3, path to img3 relative script2.js ../assets/folder1/img3
+
+script22.js require img
+
+Result:
+   build.js
+   build.css
+      assets/
+         lib1/
+            folder1/
+               img
+            folder33/
+               img345
+         lib24/
+            folder48/
+               img23
+
+
+             
